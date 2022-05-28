@@ -1,0 +1,7 @@
+"use strict";
+/**
+ * FORKED FORM:   node_modules/webpack/types.d.ts
+ * VERSION:       5.36.2
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+//# sourceMappingURL=webpack.types.js.map

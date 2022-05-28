@@ -1,0 +1,198 @@
+{
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"ng-host": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				},
+				"@schematics/angular:application": {
+					"strict": true
+				}
+			},
+			"root": "projects/ng-host",
+			"sourceRoot": "projects/ng-host/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/ng-host",
+						"index": "projects/ng-host/src/index.html",
+						"main": "projects/ng-host/src/main.ts",
+						"polyfills": "projects/ng-host/src/polyfills.ts",
+						"tsConfig": "projects/ng-host/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/ng-host/src/favicon.ico",
+							"projects/ng-host/src/assets"
+						],
+						"styles": [
+							"projects/ng-host/src/styles.scss"
+						],
+						"scripts": [],
+						"extraWebpackConfig": "projects/ng-host/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "projects/ng-host/src/environments/environment.ts",
+									"with": "projects/ng-host/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/ng-host/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "ng-host:build:production",
+							"extraWebpackConfig": "projects/ng-host/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "ng-host:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200,
+						"publicHost": "http://localhost:4200",
+						"extraWebpackConfig": "projects/ng-host/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "ng-host:build",
+						"extraWebpackConfig": "projects/ng-host/webpack.config.js"
+					}
+				}
+			}
+		},
+		"ng-remote": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				},
+				"@schematics/angular:application": {
+					"strict": true
+				}
+			},
+			"root": "projects/ng-remote",
+			"sourceRoot": "projects/ng-remote/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/ng-remote",
+						"index": "projects/ng-remote/src/index.html",
+						"main": "projects/ng-remote/src/main.ts",
+						"polyfills": "projects/ng-remote/src/polyfills.ts",
+						"tsConfig": "projects/ng-remote/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/ng-remote/src/favicon.ico",
+							"projects/ng-remote/src/assets"
+						],
+						"styles": [
+							"projects/ng-remote/src/styles.scss"
+						],
+						"scripts": [],
+						"extraWebpackConfig": "projects/ng-remote/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "projects/ng-remote/src/environments/environment.ts",
+									"with": "projects/ng-remote/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/ng-remote/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "ng-remote:build:production",
+							"extraWebpackConfig": "projects/ng-remote/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "ng-remote:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4201,
+						"publicHost": "http://localhost:4201",
+						"extraWebpackConfig": "projects/ng-remote/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "ng-remote:build",
+						"extraWebpackConfig": "projects/ng-remote/webpack.config.js"
+					}
+				}
+			}
+		}
+	},
+	"defaultProject": "ng-host"
+}
