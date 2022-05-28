@@ -9,6 +9,13 @@ const routes: Routes = [
       import('./remote/remote.module').then((m) => {
         return m.RemoteModule;
       }),
+  },
+  {
+    path: 'another-remote',
+    loadChildren: () =>
+      import('./another-remote/another-remote.module').then((m) => {
+        return m.AnotherRemoteModule;
+      }),
   }
 ];
 

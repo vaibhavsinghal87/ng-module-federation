@@ -33,6 +33,7 @@ module.exports = {
         filename: "remoteEntry.js",
         exposes: {
           './RemoteModule': './projects/ng-remote/src/app/remote/remote.module.ts',
+          './AnotherRemoteModule': './projects/ng-remote/src/app/another-remote/another-remote.module.ts',
         },        
         
         // For hosts (please adjust)
