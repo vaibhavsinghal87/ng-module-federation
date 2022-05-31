@@ -6,15 +6,15 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./remote/remote.module').then((m) => {
-        return m.RemoteModule;
+      import('./child-2/child-2.module').then((m) => {
+        return m.Child2Module;
       }),
   },
   {
     path: 'another-remote',
     loadChildren: () =>
-      import('./another-remote/another-remote.module').then((m) => {
-        return m.AnotherRemoteModule;
+      import('./child-1/child-1.module').then((m) => {
+        return m.Child1Module;
       }),
   }
 ];

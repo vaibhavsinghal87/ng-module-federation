@@ -1,1 +1,1 @@
-declare module 'ngRemote/RemoteModule';
+declare module 'ngRemote/Child2Module';

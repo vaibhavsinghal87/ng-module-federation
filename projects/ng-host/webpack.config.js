@@ -37,7 +37,7 @@ module.exports = {
         
         // For hosts (please adjust)
         remotes: {
-          "ngRemote": "http://localhost:4201/remoteEntry.js",
+          "ngRemote": "http://localhost:4205/remoteEntry.js",
         },
 
         shared: share({

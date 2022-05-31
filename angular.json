@@ -1,6 +1,11 @@
 {
 	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-	"version": 1,
+  "version": 1,
+  "cli": {
+    "cache": {
+      "enabled": false
+    }
+  },
 	"newProjectRoot": "projects",
 	"projects": {
 		"ng-host": {
@@ -20,6 +25,7 @@
 				"build": {
 					"builder": "ngx-build-plus:browser",
 					"options": {
+            			"plugin": "~hooks/plugin.js",
 						"outputPath": "dist/ng-host",
 						"index": "projects/ng-host/src/index.html",
 						"main": "projects/ng-host/src/main.ts",
@@ -115,6 +121,7 @@
 				"build": {
 					"builder": "ngx-build-plus:browser",
 					"options": {
+            "plugin": "~projects/hooks/plugin.js",
 						"outputPath": "dist/ng-remote",
 						"index": "projects/ng-remote/src/index.html",
 						"main": "projects/ng-remote/src/main.ts",
@@ -130,7 +137,8 @@
 						],
 						"scripts": [],
 						"extraWebpackConfig": "projects/ng-remote/webpack.config.js",
-						"commonChunk": false
+						"commonChunk": false,
+            "singleBundle": true
 					},
 					"configurations": {
 						"production": {

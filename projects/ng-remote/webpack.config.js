@@ -11,7 +11,7 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: "ngRemote",
-    publicPath: "auto"
+    publicPath: "auto",
   },
   optimization: {
     runtimeChunk: false
@@ -26,31 +26,29 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        library: { type: "module" },
+      library: { type: "module" },
 
-        // For remotes (please adjust)
-        name: "ngRemote",
-        filename: "remoteEntry.js",
-        exposes: {
-          './RemoteModule': './projects/ng-remote/src/app/remote/remote.module.ts',
-          './AnotherRemoteModule': './projects/ng-remote/src/app/another-remote/another-remote.module.ts',
-        },        
-        
-        // For hosts (please adjust)
-        // remotes: {
-        //     "ngHost": "http://localhost:4200/remoteEntry.js",
+      // For remotes (please adjust)
+      name: "ngRemote",
+      filename: "remoteEntry.js",
+      exposes: {
+        './Child1': './projects/ng-remote/src/app/child-1/child-1.module.ts',
+        './Child2': './projects/ng-remote/src/app/child-2/child-2.module.ts'
+      },        
+      
+      // For hosts (please adjust)
+      remotes: {
+        "ngRemote2": "http://localhost:4202/remoteEntry.js",
+      },
 
-        // },
+      shared: share({
+        "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+        "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+        "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+        "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
-          ...sharedMappings.getDescriptors()
-        })
-        
+        ...sharedMappings.getDescriptors()
+      })  
     }),
     sharedMappings.getPlugin()
   ],
