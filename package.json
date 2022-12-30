@@ -11,6 +11,8 @@
     "ng-host:build:prod": "ng build ng-host",
     "ng-remote:start": "ng serve ng-remote",
     "ng-remote:build:prod": "ng build ng-remote",
+    "ng-remote2:start": "ng serve ng-remote2",
+    "ng-remote2:build:prod": "ng build ng-remote2",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,

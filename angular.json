@@ -1,11 +1,11 @@
 {
 	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "cli": {
-    "cache": {
-      "enabled": false
-    }
-  },
+	"version": 1,
+	"cli": {
+		"cache": {
+			"enabled": false
+		}
+	},
 	"newProjectRoot": "projects",
 	"projects": {
 		"ng-host": {
@@ -25,7 +25,7 @@
 				"build": {
 					"builder": "ngx-build-plus:browser",
 					"options": {
-            			"plugin": "~hooks/plugin.js",
+						"plugin": "~hooks/plugin.js",
 						"outputPath": "dist/ng-host",
 						"index": "projects/ng-host/src/index.html",
 						"main": "projects/ng-host/src/main.ts",
@@ -121,7 +121,7 @@
 				"build": {
 					"builder": "ngx-build-plus:browser",
 					"options": {
-            "plugin": "~projects/hooks/plugin.js",
+						"plugin": "~projects/hooks/plugin.js",
 						"outputPath": "dist/ng-remote",
 						"index": "projects/ng-remote/src/index.html",
 						"main": "projects/ng-remote/src/main.ts",
@@ -138,7 +138,7 @@
 						"scripts": [],
 						"extraWebpackConfig": "projects/ng-remote/webpack.config.js",
 						"commonChunk": false,
-            "singleBundle": true
+						"singleBundle": true
 					},
 					"configurations": {
 						"production": {
@@ -197,6 +197,119 @@
 					"options": {
 						"browserTarget": "ng-remote:build",
 						"extraWebpackConfig": "projects/ng-remote/webpack.config.js"
+					}
+				}
+			}
+		},
+		"ng-remote2": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				},
+				"@schematics/angular:application": {
+					"strict": true
+				}
+			},
+			"root": "projects/ng-remote2",
+			"sourceRoot": "projects/ng-remote2/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/ng-remote2",
+						"index": "projects/ng-remote2/src/index.html",
+						"main": "projects/ng-remote2/src/main.ts",
+						"polyfills": "projects/ng-remote2/src/polyfills.ts",
+						"tsConfig": "projects/ng-remote2/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/ng-remote2/src/favicon.ico",
+							"projects/ng-remote2/src/assets"
+						],
+						"styles": [
+							"projects/ng-remote2/src/styles.scss"
+						],
+						"scripts": [],
+						"extraWebpackConfig": "projects/ng-remote2/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "projects/ng-remote2/src/environments/environment.ts",
+									"with": "projects/ng-remote2/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/ng-remote2/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "ng-remote2:build:production",
+							"extraWebpackConfig": "projects/ng-remote2/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "ng-remote2:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4202,
+						"publicHost": "http://localhost:4202",
+						"extraWebpackConfig": "projects/ng-remote2/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "ng-remote2:build",
+						"extraWebpackConfig": "projects/ng-remote2/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "projects/ng-remote2/src/test.ts",
+						"polyfills": "projects/ng-remote2/src/polyfills.ts",
+						"tsConfig": "projects/ng-remote2/tsconfig.spec.json",
+						"karmaConfig": "projects/ng-remote2/karma.conf.js",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/ng-remote2/src/favicon.ico",
+							"projects/ng-remote2/src/assets"
+						],
+						"styles": [
+							"projects/ng-remote2/src/styles.scss"
+						],
+						"scripts": []
 					}
 				}
 			}

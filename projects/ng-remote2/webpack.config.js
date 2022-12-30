@@ -10,8 +10,8 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "ngRemote",
-    publicPath: "auto",
+    uniqueName: "ngRemote2",
+    publicPath: "auto"
   },
   optimization: {
     runtimeChunk: false
@@ -29,16 +29,18 @@ module.exports = {
       library: { type: "module" },
 
       // For remotes (please adjust)
-      name: "ngRemote",
+      name: "ngRemote2",
       filename: "remoteEntry.js",
       exposes: {
-        './Child1': './projects/ng-remote/src/app/child-1/child-1.module.ts',
-        './Child2': './projects/ng-remote/src/app/child-2/child-2.module.ts'
+        './Child1': './projects/ng-remote2/src/app/child-1/child-1.module.ts',
       },
 
       // For hosts (please adjust)
-      remotes: {
-      },
+      // remotes: {
+      //     "ngHost": "http://localhost:4200/remoteEntry.js",
+      //     "ngRemote": "http://localhost:4201/remoteEntry.js",
+
+      // },
 
       shared: share({
         "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
@@ -48,6 +50,7 @@ module.exports = {
 
         ...sharedMappings.getDescriptors()
       })
+
     }),
     sharedMappings.getPlugin()
   ],

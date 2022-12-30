@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
-        remoteEntry: 'http://localhost:4205/remoteEntry.js',
+        remoteEntry: 'http://localhost:4201/remoteEntry.js',
         exposedModule: './Child1',
       }).then(m => m.Child1Module),
   },
@@ -33,9 +33,18 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
-        remoteEntry: 'http://localhost:4205/remoteEntry.js',
+        remoteEntry: 'http://localhost:4201/remoteEntry.js',
         exposedModule: './Child2',
       }).then(m => m.Child2Module),
+  },
+  {
+    path: 'remote2',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4202/remoteEntry.js',
+        exposedModule: './Child1',
+      }).then(m => m.Child1Module),
   }
 ];
 
