@@ -25,7 +25,7 @@
 				"build": {
 					"builder": "ngx-build-plus:browser",
 					"options": {
-						"plugin": "~hooks/plugin.js",
+						"plugin": "~projects/hooks/plugin.js",
 						"outputPath": "dist/ng-host",
 						"index": "projects/ng-host/src/index.html",
 						"main": "projects/ng-host/src/main.ts",
