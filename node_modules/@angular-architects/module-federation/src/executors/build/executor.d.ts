@@ -1,4 +1,0 @@
-import { BuildExecutorSchema } from './schema';
-export default function runExecutor(options: BuildExecutorSchema): Promise<{
-    success: boolean;
-}>;
